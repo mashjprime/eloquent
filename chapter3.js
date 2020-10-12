@@ -1,4 +1,12 @@
 console.log("Hello World!!!");
+function callTheFunctions() {
+  console.log(range(1, 10, 2));
+  console.log(range(5, 1, -1));
+  console.log(sum(range(1, 10)));
+  console.log(reverseArray(range(1, 10)));
+  console.log(reverseArrayInPlace(range(1, 10)));
+  console.log(JSON.stringify(arrayToList(range(1, 3))));
+}
 
 function range(a, b, s = 1) {
   let theRange = [];
@@ -43,8 +51,15 @@ function reverseArrayInPlace(array) {
   return array;
 }
 
-console.log(range(1, 10, 2));
-console.log(range(5, 1, -1));
-console.log(sum(range(1, 10)));
-console.log(reverseArray(range(1, 10)));
-console.log(reverseArrayInPlace(range(1, 10)));
+callTheFunctions();
+
+
+//let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
+function arrayToList(array) {
+  let list = null;
+  for (let i = array.length - 1; i >= 0; i--) {
+    //console.log("test");
+    list = { value: array[i], rest: list };
+  }
+  return list;
+}
